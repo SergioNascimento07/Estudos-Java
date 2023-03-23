@@ -8,7 +8,8 @@ public class Autodromo {
         jeep.setChassi("923812");
         System.out.println(jeep.getChassi()); 
         jeep.ligar(); // encapsula os outros metodos
-
+        // Veiculo novo = new Veiculo();
+        // Não dá para instanciar classe abstrata
         Moto z400 = new Moto();
         z400.setChassi("192423");
         z400.ligar();

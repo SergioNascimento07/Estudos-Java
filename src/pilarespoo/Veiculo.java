@@ -9,14 +9,14 @@ public abstract class Veiculo {
     protected String chassi;
     //protected tambem torna publica na classe herdeira ou default?
     //Protected torna variavel assecivel a herdeiro, so da pra usar assim
-    public void setChassi(String chassi){
+    protected void setChassi(String chassi){
         this.chassi = chassi;
     }
-
-    public String getChassi() {
+    //private não passa metodo nem para a classe filha
+    protected String getChassi() {
         return this.chassi;
     }
 
-    public abstract void ligar();
+    protected abstract void ligar();
     //metodo sera definido depois
 }
