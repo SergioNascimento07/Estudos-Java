@@ -1,7 +1,5 @@
 package condicionais;
 
-import java.lang.management.MemoryUsage;
-
 public class Condicionais {
     public static void main(String[] args) {
         // condicional simples
