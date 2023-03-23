@@ -32,6 +32,6 @@ public class About {
         System.out.println(nome);
         System.out.println(idade);
         System.out.println(altura);
-        
+        scanner.close();
     }
 }
