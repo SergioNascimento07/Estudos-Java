@@ -16,7 +16,7 @@ public class ListaGenerica<T> {
     }
 
     public T retornaItemLista(){
-        return minhaLista.get(2);
+        return minhaLista.get(0);
     }
     
 }

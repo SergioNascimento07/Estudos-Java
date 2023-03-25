@@ -40,7 +40,9 @@ public class WildCardTest {
         cachorros.add(new Cachorro());
         cachorros.add(new Cachorro());
         // consultaAnimalList(cachorros); -- não é possivel
-        consultaAnimaisListCorrect(cachorros);
+        // consultaAnimaisListCorrect(cachorros);
+
+        
     }
     //Em arrays é possivel passar como parametros filhos/herdeiro da classe requerida
     public static void consultarAnimais(Animal[] animals){
@@ -55,11 +57,30 @@ public class WildCardTest {
         for (Animal animais: animals){
             animais.consulta();
         }
+        animals.add(new Cachorro());
+        animals.add(new Gato());
+        // animals.set(0, new Gato()); -- funciona
     }
 
+    
+    //todo metodo que usa o caracter coringa promete que nao vai adicionar nada
     public static void consultaAnimaisListCorrect(List<? extends Animal> animals){
         for (Animal animais: animals) {
             animais.consulta();
+        }
+        // animals.add(new Animal()); -- Não permite adicionar classes assim
+    }
+
+    public static void AdicionarCachorrList(List<? super Cachorro> animals){
+        animals.add(new Cachorro());
+        //Aceita adicionar cachorro pois essa classe permite tudo que é cachorro ou pai dele
+    }
+    
+    
+    public static void metodoGeralList(List<?> classe){
+        classe.get(0);
+        for (Object obj: classe){
+           System.out.println(obj.getClass());
         }
     }
 }
