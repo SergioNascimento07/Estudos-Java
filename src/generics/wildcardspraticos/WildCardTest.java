@@ -34,15 +34,24 @@ public class WildCardTest {
             animais.consulta();
         }
 
+        List<Gato> gatos = new ArrayList<>();
+        gatos.add(new Gato());
+        gatos.add(new Gato());
+
+        List<Animal> animais = new ArrayList<>();
+        animais.add(new Gato());
+        animais.add(new Cachorro());
+        metodoGeralList(animais);
 
         //TESTE COM COLEÇOES
         List<Cachorro> cachorros = new ArrayList<>();
         cachorros.add(new Cachorro());
         cachorros.add(new Cachorro());
-        // consultaAnimalList(cachorros); -- não é possivel
-        // consultaAnimaisListCorrect(cachorros);
-
         
+        // consultaAnimalList(cachorros); -- não é possivel
+        consultaAnimaisListCorrect(cachorros);
+        metodoGeralList(cachorros);
+        metodoGeralList(gatos);
     }
     //Em arrays é possivel passar como parametros filhos/herdeiro da classe requerida
     public static void consultarAnimais(Animal[] animals){
@@ -68,7 +77,7 @@ public class WildCardTest {
         for (Animal animais: animals) {
             animais.consulta();
         }
-        // animals.add(new Animal()); -- Não permite adicionar classes assim
+        //animals.add(new Cachorro()); -- Não permite adicionar classes assim
     }
 
     public static void AdicionarCachorrList(List<? super Cachorro> animals){
