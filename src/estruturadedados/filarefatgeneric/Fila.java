@@ -1,26 +1,27 @@
-package estruturadedados.fila;
-
+package estruturadedados.filarefatgeneric;
+//refatorada para embutir a adicao de nó direto em metodo da classe Fila
 import java.util.ArrayList;
 import java.util.List;
+//SERÁ POSSÍVEL SOMENTE UM TIPO DE DADO
+public class Fila<T> {
 
-public class Fila {
-
-    private No refNoEntradaFila;
+    private No<T> refNoEntradaFila;
 
     public Fila(){
         this.refNoEntradaFila = null;
-    }
+    } 
 
     public boolean isEmpty(){
         return refNoEntradaFila == null? true: false;
     }
 
-    public void enqueue(No novoNo) {
+    public void enqueue(T object) {
+        No novoNo = new No(object);
         novoNo.setRefNo(refNoEntradaFila);
         refNoEntradaFila = novoNo;
     }
 
-    public No first(){ //pega o primeiro nó
+    public T first(){ //pega o primeiro nó
         if (!isEmpty()){
             No primeiroNo = refNoEntradaFila;
 
@@ -31,13 +32,14 @@ public class Fila {
                     break;
                 }
             }
-            return primeiroNo;
+            return (T) primeiroNo.getObject();
+            //vai retornar somente o conteudo desse nó
         } else {
             return null;
         }
     }
 
-    public No dequeue() { //retorna o primeiro nó, que foi retirado
+    public T dequeue() { //retorna o primeiro nó, que foi retirado
         No primeiroNo = refNoEntradaFila;
         No noAuxiliar = refNoEntradaFila;
 
@@ -51,19 +53,18 @@ public class Fila {
                     break;
                 }
             }
-            return primeiroNo;
+            return (T) primeiroNo.getObject();
         } else {
             return null;
         }
     }
 
     public List multDequeue(int qtdeVezes) {
-        if (!isEmpty()){   
-            //se passar List<Object> ou outros pais ele tb aceita o No 
-            List<No> nosRetirados = new ArrayList<>();
+        if (!isEmpty()){    
+            List<T> nosRetirados = new ArrayList<>();
 
             for (int i = 0; i< qtdeVezes; i++){
-                No noRetirado = this.dequeue();
+                T noRetirado = this.dequeue();
                 nosRetirados.add(noRetirado);
             }
 
