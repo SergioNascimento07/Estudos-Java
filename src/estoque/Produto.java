@@ -1,21 +1,26 @@
 package estoque;
 
+import java.text.NumberFormat;
+
 public class Produto {
     //Atributos
     private int idProduto;
     private String nome;
     private double preco;
     private int quantidade;
+    private boolean estado;
+    private NumberFormat formatter;
 
     public Produto() {
-        
+        formatter = NumberFormat.getCurrencyInstance();
     }
 
-    public Produto(int idProduto, String nome, double preco, int quantidade) {
+    public Produto(int idProduto, String nome, double preco, int quantidade, boolean estado) {
         this.idProduto = idProduto;
         this.nome = nome;
         this.preco = preco;
         this.quantidade = quantidade;
+        this.estado = estado;
     }
 
     //getters e setters
@@ -53,6 +58,6 @@ public class Produto {
     }
 
     public String toString() { // entende que se refere ao atributo mesmo sem this
-        return "Produto [idProduto=" + idProduto + ", nome=" + nome + ", preco=" + preco + ",  quantidade=" + quantidade + "]";
+        return "Produto: [idProduto=" + idProduto + ", nome=" + nome + ", preco=" + formatter.format(preco) + ",  quantidade=" + formatter.format(quantidade) + ", precoFinal=" + (preco+quantidade) +", estado=" + (estado?"ativo":"desativo") + "]";
     }
 }
