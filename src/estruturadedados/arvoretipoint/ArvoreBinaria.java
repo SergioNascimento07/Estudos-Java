@@ -2,7 +2,7 @@ package estruturadedados.arvoretipoint;
 
 class ArvoreBinaria {
     
-    public BinNo raiz;
+    private BinNo raiz;
 
     public ArvoreBinaria(){
         this.raiz = null;
@@ -22,6 +22,86 @@ class ArvoreBinaria {
             atual.setNoDir(inserir(atual.getNoDir(), novoNo));
         }
         return atual;
+    }
+
+    public void remover(Integer conteudo){
+        try{
+            BinNo atual = this.raiz;
+            BinNo pai = null;
+            BinNo filho = null;
+            BinNo temp = null;
+            BinNo ultimoNoMaiorEsq = null;
+            BinNo temp2 = null;
+
+            while (atual != null && !atual.getConteudo().equals(conteudo)){
+                pai = atual;
+                if(conteudo.compareTo(atual.getConteudo()) < 0){
+                    atual = atual.getNoEsq();
+                }else {
+                    atual = atual.getNoDir();
+                }
+            }
+
+            if(atual == null){
+                System.out.println("Conteudo nao encontrado. Bloco Try");
+            }
+
+            // if(pai == null){ ---- arrumar remocao de raiz
+            //     if(atual.getNoDir() == null){
+            //         this.raiz = atual.getNoEsq();
+            //     }else if(atual.getNoEsq() == null){
+            //         this.raiz = atual.getNoDir();
+            //     }else {
+            //         for(temp = atual, filho = atual.getNoEsq();
+            //             filho.getNoDir() == null;
+            //             temp = filho, filho = filho.getNoDir()
+            //         ){}
+            //         if(filho != atual.getNoEsq()){
+            //             filho.setNoDir(raiz.getNoDir());
+            //             for (temp2 = filho,ultimoNoMaiorEsq = temp2.getNoEsq();
+            //                 ultimoNoMaiorEsq.getNoEsq() == null;
+            //                 temp2 = ultimoNoMaiorEsq, ultimoNoMaiorEsq = ultimoNoMaiorEsq.getNoEsq()
+            //             ){}
+            //             temp2.setNoDir(null);
+            //             ultimoNoMaiorEsq.setNoEsq(atual.getNoEsq());
+            //         }
+                    
+            //         raiz = filho;
+            //     }
+            //}
+            else if(atual.getNoDir() == null){
+                if(pai.getNoEsq() == atual){
+                    pai.setNoEsq(atual.getNoEsq());
+                }else {
+                    pai.setNoDir(atual.getNoEsq());
+                }
+            }else if(atual.getNoEsq() == null){
+                if(pai.getNoEsq() == atual){
+                    pai.setNoEsq(atual.getNoDir());
+                }else {
+                    pai.setNoDir(atual.getNoDir());
+                }
+            }else{
+                temp = atual;
+                filho = atual.getNoEsq();
+                do {
+                    if(filho != atual.getNoEsq()){
+                        temp.setNoDir(filho.getNoEsq());
+                        filho.setNoEsq(atual.getNoEsq());
+                    }
+                    filho.setNoDir(atual.getNoDir());
+                    if(pai.getNoEsq() == atual){
+                        pai.setNoEsq(filho);
+                    }else{
+                        pai.setNoDir(filho);
+                    }
+                    temp = filho ;
+                    filho = filho.getNoDir();
+                } while (filho.getNoDir() != null);
+            }
+        }catch (NullPointerException erro){
+            System.out.println("Conteudo nao encontrado. Bloco Catch");
+        }
     }
 
     public void exibirInOrdem() {

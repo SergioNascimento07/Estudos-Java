@@ -17,5 +17,10 @@ public class Main {
         arvore.inserir(new Obj(32));
         
         arvore.exibirInOrdem();//ta printando o "meuValor" do obj pq ele tem metodo toString que print conteudo
+        // arvore.exibirInOrdem();
+        // arvore.exibirPosOrdem();
+        // arvore.remover(new Obj(25));
+        arvore.remover(new Obj(13));
+        arvore.exibirInOrdem();
     }
 }
