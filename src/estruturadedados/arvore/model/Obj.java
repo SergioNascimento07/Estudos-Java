@@ -1,5 +1,7 @@
 package estruturadedados.arvore.model;
 
+import java.util.Objects;
+
 public class Obj extends ObjArvore<Obj>{
     private Integer meuValor;
 
@@ -24,5 +26,20 @@ public class Obj extends ObjArvore<Obj>{
 
     public String toString(){
         return  ""+this.meuValor;
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o==null || getClass() != o.getClass()) {
+            return false;
+        }
+        Obj obj  = (Obj) o;
+        return Objects.equals(meuValor, obj.meuValor);
+    }
+
+    public int hashCode() {
+        return Objects.hash(meuValor);
     }
 }
