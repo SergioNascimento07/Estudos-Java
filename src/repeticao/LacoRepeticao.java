@@ -16,7 +16,6 @@ public class LacoRepeticao {
         System.out.println(minhaLista.get(2)); 
         // forma de  trabalhar com classe Array
 
-
         String[] alunosNovo = {"Sergio", "Augusto", "Jorge"};
         // nao da pra aumentar o tamanho de um array depois de definir
         // for iterando sobre array

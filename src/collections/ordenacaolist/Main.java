@@ -95,7 +95,6 @@ public class Main {
         Collections.sort(listCat);
         System.out.println(listCat);
 
-
         //Pode implementar o metodo comparator e passar
         Collections.sort(listCat, new ComparatorIdade());
         System.out.println(listCat);
