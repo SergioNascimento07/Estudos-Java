@@ -60,4 +60,8 @@ class ExceptCustomAbertura extends Exception {
         "nomeDoArquivo=" + nomeDoArquivo +
         ", diretorio=" + diretorio + "}";
     }
+
+    // public synchronized Throwable getCause() {
+    //     return super.getCause();
+    // }
 }
